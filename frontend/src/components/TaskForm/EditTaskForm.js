@@ -2,8 +2,8 @@ import React, { useState } from "react";
 const EditTaskForm = (props) => {
     const [UserInput, setUserInput] = useState({
         id: props.OldData.id,
-        TaskName: "",
-        Time : ""
+        TaskName: props.OldData.TaskName,
+        Time : props.OldData.Time
     });
 
     const SubmitHandler = (e) => {
@@ -44,14 +44,13 @@ const EditTaskForm = (props) => {
                     <form onSubmit={SubmitHandler} className="form">
                         <div className="row">                            
                             <div className="form-group col-md-5">                
-                                <input type="text" name="txtTask" onChange={TaskNameHandler} placeholder="Task" className="form-control" ></input>  
-
-                                {/* value={props.OldData.TaskName} */}
+                                <input type="text" name="txtTask" onChange={TaskNameHandler} placeholder="Task" className="form-control" 
+                                value={UserInput.TaskName}></input>  
                             </div>
                             <div className="form-group col-md-5">                
-                                <input type="date" name="dtTime" onChange={TimeHandler} placeholder="Task" className="form-control"></input>
+                                <input type="date" name="dtTime" onChange={TimeHandler} placeholder="Task" className="form-control"
+                                value={new Date(UserInput.Time).toISOString().slice(0, 10)}></input>
 
-                                {/* value={new Date(props.OldData.Time).toISOString().slice(0, 10)} */}
                             </div>
                             <div className="form-group col-md-2">               
                                 <div className="btn-group">

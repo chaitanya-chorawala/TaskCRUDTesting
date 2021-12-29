@@ -50,10 +50,6 @@ function App() {
       setEditForm(true);
   };
 
-  const CancelEditTask = () => {
-
-  };
-
   const ChangeTaskHandler = (data) => {
       const task = {
         _id : data.id,
@@ -100,7 +96,8 @@ function App() {
 
         {editForm &&
           <div className="row d-flex justify-content-center m-3">
-              <EditTaskForm OldData={editProps} OnChangeTask={ChangeTaskHandler} OnCancel={CancelEditTask()}></EditTaskForm>
+              <EditTaskForm OldData={editProps} OnChangeTask={ChangeTaskHandler} 
+              OnCancel={() => setEditForm(false)}></EditTaskForm>
           </div>
         }
 
